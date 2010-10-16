@@ -5,12 +5,12 @@ Created on Oct 16, 2010
 '''
 from tkinter import *
 from tkinter.filedialog import askopenfilename
+import os
+
 def showResult():
-    print("Test")
+    display.saveLabel.config(text="AFAFAFA")
 
 
-
-    
 class App:
     
     textBox1=None
@@ -26,27 +26,24 @@ class App:
         Entry(fm).grid(row=0, column=1)
         Entry(fm).grid(row=1, column=1)
         self.textBox1 = Entry(fm)
-        self.textBox1.grid(row=2, column=1)
-        Button(fm, text='Browse',command=openfile).grid(row=2, column=3)
-        
-        self.textBox2=Entry(fm).grid(row=3, column=1)
-        Button(fm, text='Browse',command=openfile).grid(row=3, column=3)
-        self.textBox3=Entry(fm,state='disabled')
-        self.textBox3.grid(row=4, column=1)
+        self.textBox1.grid(row=2, column=1)           
+        self.textBox2 = Entry(fm)
+        self.textBox2.grid(row=3, column=1)
+        Button(fm, text='Browse',command=(lambda : self.textBox1.insert(END, askopenfilename())) ).grid(row=2, column=3)
+        Button(fm, text='Browse',command=(lambda : self.textBox2.insert(END, askopenfilename())) ).grid(row=3, column=3)
+        self.saveLabel=Label(fm,text="AAAAA")
+        self.saveLabel.grid(row=4, column=1,sticky=W)
         frame=Frame(fm)
         Button(frame, text='Connect',command=showResult).pack(side=LEFT, fill=BOTH)
         Button(frame, text='Quit',command=master.quit).pack(side=LEFT, fill=BOTH)
         frame.grid(row=5, columnspan=2)
         fm.pack(fill=BOTH, expand=YES)
         
-def openfile():
-    file_name = askopenfilename()
-    print(file_name)
-    display.textBox1.insert(END, file_name)
-        
+
 root = Tk() 
 #root.option_add('*font', ('verdana', 12, 'bold'))
 root.title("Home Budget")
+os
 display = App(root)
 root.mainloop()
 
