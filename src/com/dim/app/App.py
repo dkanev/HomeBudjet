@@ -6,14 +6,32 @@ Created on Oct 16, 2010
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 import os
-
+from com.dim.tool.Merge import Merge
+    
 def showResult():
     display.saveLabel.config(text="AFAFAFA")
 
 
 class App:
     
-    textBox1=None
+    def getNewFileName(self,dir,namePattern,fileExtension):
+        fileNames=os.listdir(dir);
+        checkFileName=namePattern + "." + fileExtension
+        i=1
+        notFound=False
+        while 1:
+            for fileName in fileNames:
+                if checkFileName==fileName:
+                    checkFileName=namePattern + str(i) + "." + fileExtension
+                    i=i+1
+                    notFound=True
+                    break
+                
+            if not notFound:
+                return dir + "/" + checkFileName
+            else:
+                notFound=False
+        
     
     def __init__(self, master):
         #master.geometry("300x200")
@@ -29,22 +47,33 @@ class App:
         self.textBox1.grid(row=2, column=1)           
         self.textBox2 = Entry(fm)
         self.textBox2.grid(row=3, column=1)
-        Button(fm, text='Browse',command=(lambda : self.textBox1.insert(END, askopenfilename())) ).grid(row=2, column=3)
-        Button(fm, text='Browse',command=(lambda : self.textBox2.insert(END, askopenfilename())) ).grid(row=3, column=3)
-        self.saveLabel=Label(fm,text="AAAAA")
+        Button(fm, text='Browse',command=(lambda : self.textBox1.delete(0, END) or self.textBox1.insert(0, askopenfilename())) ).grid(row=2, column=3)
+        Button(fm, text='Browse',command=(lambda : self.textBox2.delete(0, END) or self.textBox2.insert(END, askopenfilename())) ).grid(row=3, column=3)
+        self.saveLabel=Label(fm,text="")
         self.saveLabel.grid(row=4, column=1,sticky=W)
         frame=Frame(fm)
-        Button(frame, text='Connect',command=showResult).pack(side=LEFT, fill=BOTH)
+        Button(frame, text='Merge',command=self.mergeFile).pack(side=LEFT, fill=BOTH)
         Button(frame, text='Quit',command=master.quit).pack(side=LEFT, fill=BOTH)
         frame.grid(row=5, columnspan=2)
         fm.pack(fill=BOTH, expand=YES)
-        
 
-root = Tk() 
-#root.option_add('*font', ('verdana', 12, 'bold'))
-root.title("Home Budget")
-os
-display = App(root)
-root.mainloop()
+    def mergeFile(self):
+        newFile=self.getNewFileName("./resource", "Merge", "xml")
+        mergeTool=Merge(self.textBox1.get(),self.textBox2.get())
+        mergeTool.mergePredecesorXMLFile(newFile)
+        self.saveLabel.config(text=newFile)
+        
+             
+if __name__ == '__main__':
+    root = Tk() 
+    #root.option_add('*font', ('verdana', 12, 'bold'))
+    root.title("Home Budget")
+    saveFile=""
+    if not os.path.exists("./resource"):
+        os.makedirs("./resource")
+
+    
+    display = App(root)
+    root.mainloop()
 
 
