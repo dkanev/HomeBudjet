@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tasks>
+<task name="RUN_EXTRACT_OPERATION">
+  <execute process="gzip">
+    <args>
+      <arg value="-xvf"/>
+      <arg name="extractDir" value="./test"/>
+      <arg name="file" value="./ttest.zip"/>
+    </args>
+    <returnCode value="0"/>
+  </execute>
+</task>
+<task name="CREATE_LINK">
+    <execute process="gzip">
+    <args>
+      <arg name="" value=""/>
+    </args>
+    <returnCode value=""/> 
+  </execute>
+</task>
+<task name="COPY_FILES">
+    <execute process="cp">
+    <args>
+      <arg name="" value=""/>
+    </args>
+    <returnCode value=""/> 
+    <returnCode value="" />
+  </execute>
+</task>
+<task name="SHOW_IMAGE">
+    <showimage>
+      <img src="madonna.jpg" alt='Foligno Madonna, by Raphael'/>
+      <caption>My girl</caption>
+      <description></description>
+    <returnCode value="" />
+  </showimage>
+</task>
+</tasks>

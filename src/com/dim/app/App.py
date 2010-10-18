@@ -8,9 +8,6 @@ from tkinter.filedialog import askopenfilename
 import os
 from com.dim.tool.Merge import Merge
     
-def showResult():
-    display.saveLabel.config(text="AFAFAFA")
-
 
 class App:
     
