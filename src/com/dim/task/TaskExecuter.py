@@ -7,13 +7,23 @@ from com.dim.task.Task import Task
 from com.dim.task.TaskBuilder import TaskBuilder
 import subprocess
 
+
 class TaskExecuter(object):
     x=10 
-    def executeTask(self,task): 
-        fsock = open('../app/resource/out.log', 'w')
-        if task.taskType=="execute":
+    def executeTask(self,task):
+
+            
+        if task.taskType == "execute":
+            output = subprocess.PIPE
+            errOutput = subprocess.PIPE
+            if task.hasOutputFile() :
+                output = open(task.getOutputFile(), 'w')
+            if task.hasErrortFile() :
+                errOutput = open(task.getErrortFile(), 'w')
+
+
             print(task.taskType)
-            process = subprocess.Popen(task.command + " " + task.args, shell=True,stdout=fsock)
+            process = subprocess.Popen(task.command + " " + task.args, shell=True,stdout=output,stderr=errOutput)
             while True:
                 process.poll()
                 if process.returncode !=None:

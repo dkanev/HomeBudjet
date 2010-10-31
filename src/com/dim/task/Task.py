@@ -4,12 +4,13 @@ Created on Oct 18, 2010
 @author: dimitar
 '''
 
-class Task:
+class Task(object):
     '''
     classdocs
     '''
 
-
+    errorFile=None
+    outFile=None
     def __init__(self,taskType,processName,argList,returnCode):
         '''
         Constructor
@@ -19,6 +20,27 @@ class Task:
         self.argList=argList
         self.returnCode=returnCode
     
+    def setOutputFile(self,outFile):
+        self.outFile=outFile
+        
+    def setErrorFile(self,errorFile):
+        self.errorFile=errorFile
+    
+    def hasOutputFile(self):
+        if self.outFile != None and len(self.outFile)>0: return True
+        else: return False
+        
+    def hasErrortFile(self):
+        if self.errorFile != None and len(self.outFile)>0: return True
+        else: return False
+    
+    def getOutputFile(self):
+        return self.outFile
+        
+    def getErrortFile(self):
+        return self.errorFile
+        
+        
     def setName(self,taskName):
         self.taskName=taskName
      

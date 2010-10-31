@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tasks>
 <task name="RUN_EXTRACT_OPERATION">
-  <execute process="echo">
+  <execute process="echo" stdOut="../app/resource/out.log" stdErr="../app/resource/error.log">
     <args>
       <arg value="Hello world!"/>
 <!--      <arg name="extractDir" value="./test"/>

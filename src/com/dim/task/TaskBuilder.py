@@ -55,6 +55,8 @@ class TaskBuilder(object):
     def _parsExecuteXmlElement(self,executeXMLElment):
         argList=[]
         proccessName = executeXMLElment.getAttribute('process')
+        stdOut = executeXMLElment.getAttribute('stdOut')
+        stdError = executeXMLElment.getAttribute('stdErr')
         print("Process name: " + proccessName)
         arguments = executeXMLElment.getElementsByTagName('arg')
         for arg in arguments:
@@ -66,7 +68,11 @@ class TaskBuilder(object):
         if returnCode != None:
             code=returnCode.getAttribute('value')
             print("Code:"+code)
-        return Task('execute',proccessName,argList,code)
+        
+        task =Task('execute',proccessName,argList,code)
+        task.setOutputFile(stdOut)
+        task.setErrorFile(stdError)    
+        return task
     
     def _parseArgument(self,xmlArgument):
         if xmlArgument.hasAttribute('name'):
