@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tasks>
 <task name="RUN_EXTRACT_OPERATION">
-  <execute process="gzip">
+  <execute process="echo">
     <args>
-      <arg value="-xvf"/>
-      <arg name="extractDir" value="./test"/>
-      <arg name="file" value="./ttest.zip"/>
+      <arg value="Hello world!"/>
+<!--      <arg name="extractDir" value="./test"/>
+      <arg name="file" value="./ttest.zip"/> -->
     </args>
     <returnCode value="0"/>
   </execute>

@@ -82,4 +82,4 @@ class TaskBuilder(object):
 
 if __name__ == '__main__':
     builder=TaskBuilder()
-    builder.createTask("../app/resource/Task.xml", "RUN_EXTRACT_OPERATION")
+    task=builder.createTask("../app/resource/Task.xml", "RUN_EXTRACT_OPERATION")
