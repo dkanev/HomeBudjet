@@ -9,13 +9,13 @@ import subprocess
 
 
 class TaskExecuter(object):
-    x=10 
+
     def executeTask(self,task):
 
             
         if task.taskType == "execute":
-            output = subprocess.PIPE
-            errOutput = subprocess.PIPE
+            output = None
+            errOutput = None
             if task.hasOutputFile() :
                 output = open(task.getOutputFile(), 'w')
             if task.hasErrortFile() :
@@ -42,17 +42,8 @@ class TaskExecuter(object):
             pass
             
 if __name__ == '__main__':
-    pass
-#    print(str(TaskExecuter.x))
     builder=TaskBuilder()
-    task=builder.createTask("../app/resource/Task.xml", "RUN_EXTRACT_OPERATION")
+    task=builder.createTask("/home/main/python_worksapce/HomeBudjet/src/com/dim/app/resource/Task.xml", "RUN_EXTRACT_OPERATION1")
     TaskExecuter().executeTask(task)
-#    print(str(TaskExecuter.x)+ " ")
-#    rexec=TaskExecuter()
-#    print(str(rexec.x)+ " ")
-#    print(str(TaskExecuter.x)+ " ")
-#    rexec.x=22
-#    print(str(rexec.x)+ " ")
-#    rexec.executeTask(task)
-#    print(str(rexec.x)+ " ")
-#    print(str(TaskExecuter.x)+ " ")
+
+    showTask=builder.createTask("/home/main/python_worksapce/HomeBudjet/src/com/dim/app/resource/Task.xml", "SHOW_IMAGE")

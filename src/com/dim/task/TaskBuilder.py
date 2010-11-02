@@ -3,8 +3,10 @@ Created on Oct 18, 2010
 
 @author: dimitar
 '''
-import xml.dom.minidom, urllib,os,sys,io
+import xml.dom.minidom,os
 from com.dim.task.Task import Task
+from com.dim.task.ExecuteProcessTask import ExecuteProcessTask
+from com.dim.task.ShowImageTask import ShowImageTask
 
 class TaskBuilder(object):
     '''
@@ -43,7 +45,7 @@ class TaskBuilder(object):
                 if value=="execute":
                     return self._parsExecuteXmlElement(operation)
                 elif value=="showimage":
-                    pass
+                     return self._parsShowImageXmlElement(operation)
                 else:
                     raise TypeError("Incorrect task sub element: " + value)
                 
@@ -69,11 +71,34 @@ class TaskBuilder(object):
             code=returnCode.getAttribute('value')
             print("Code:"+code)
         
-        task =Task('execute',proccessName,argList,code)
+        task =ExecuteProcessTask('execute',proccessName,argList,code)
         task.setOutputFile(stdOut)
         task.setErrorFile(stdError)    
         return task
     
+    def _parsShowImageXmlElement(self,executeXMLElment):
+        argList=[]
+        imgSrc = executeXMLElment.getAttribute('src')
+        altStr = executeXMLElment.getAttribute('alt')
+
+        print("Img src: " + imgSrc)
+        caption = self._getXMLContent(executeXMLElment.getElementsByTagName('caption')[0])
+        description = self._getXMLContent(executeXMLElment.getElementsByTagName('description')[0])
+        
+                
+        print("caption: " + caption)
+        print("description: " + description)
+        task =ShowImageTask('showimage',imgSrc,altStr,caption,description)
+ 
+        return task
+    
+    
+    def _getXMLContent(self,xmlElement):
+        nodes=xmlElement.childNodes
+        for node in nodes:
+            if node.nodeType == xml.dom.minidom.Node.TEXT_NODE:
+                return node.data
+                 
     def _parseArgument(self,xmlArgument):
         if xmlArgument.hasAttribute('name'):
             parameterName=xmlArgument.getAttribute('name')
@@ -87,5 +112,4 @@ class TaskBuilder(object):
         return None
 
 if __name__ == '__main__':
-    builder=TaskBuilder()
-    task=builder.createTask("../app/resource/Task.xml", "RUN_EXTRACT_OPERATION")
+   pass

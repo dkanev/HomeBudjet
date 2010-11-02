@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <tasks>
 <task name="RUN_EXTRACT_OPERATION">
-  <execute process="echo" stdOut="../app/resource/out.log" stdErr="../app/resource/error.log">
+  <execute process="echo" stdOut="/home/main/python_worksapce/HomeBudjet/src/com/dim/app/resource/out.log" stdErr="/home/main/python_worksapce/HomeBudjet/src/com/dim/app/resource/error.log">
+    <args>
+      <arg value="Hello world!"/>
+<!--      <arg name="extractDir" value="./test"/>
+      <arg name="file" value="./ttest.zip"/> -->
+    </args>
+    <returnCode value="0"/>
+  </execute>
+</task>
+<task name="RUN_EXTRACT_OPERATION1">
+  <execute process="echo" >
     <args>
       <arg value="Hello world!"/>
 <!--      <arg name="extractDir" value="./test"/>
@@ -28,11 +38,9 @@
   </execute>
 </task>
 <task name="SHOW_IMAGE">
-    <showimage>
-      <img src="madonna.jpg" alt='Foligno Madonna, by Raphael'/>
+    <showimage src="madonna.jpg" alt="Foligno Madonna, by Raphael">
       <caption>My girl</caption>
-      <description></description>
-    <returnCode value="" />
+      <description>Test description</description>
   </showimage>
 </task>
 </tasks>
