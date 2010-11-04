@@ -38,9 +38,9 @@
   </execute>
 </task>
 <task name="SHOW_IMAGE">
-    <showimage src="madonna.jpg" alt="Foligno Madonna, by Raphael">
-      <caption>My girl</caption>
-      <description>Test description</description>
+    <showimage src="/home/main/python_worksapce/308.GIF" alt="Foligno Madonna, by Raphael">
+      <caption>Fantasy</caption>
+      <description>Fantastic coler palate.</description>
   </showimage>
 </task>
 </tasks>

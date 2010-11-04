@@ -9,7 +9,7 @@ import os
 from com.dim.tool.Merge import Merge
     
 
-class App:
+class App(object):
     
     def getNewFileName(self,dir,namePattern,fileExtension):
         fileNames=os.listdir(dir);

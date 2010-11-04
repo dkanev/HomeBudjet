@@ -6,7 +6,7 @@ Created on Oct 18, 2010
 from com.dim.task.Task import Task
 from com.dim.task.TaskBuilder import TaskBuilder
 import subprocess
-
+from tkinter import *
 
 class TaskExecuter(object):
 
@@ -39,7 +39,15 @@ class TaskExecuter(object):
 
 
         elif task.taskType=="showimage":
-            pass
+            root = Tk() 
+            root.title(task.caption)
+            fm = Frame(root)
+            gif = PhotoImage(file=task.img)
+            Label(fm,image=gif).grid(row=0, sticky=W)
+            Label(fm, text=task.description).grid(row=1, sticky=W)
+            fm.pack(fill=BOTH, expand=YES)
+            root.mainloop()
+        
             
 if __name__ == '__main__':
     builder=TaskBuilder()
@@ -47,3 +55,4 @@ if __name__ == '__main__':
     TaskExecuter().executeTask(task)
 
     showTask=builder.createTask("/home/main/python_worksapce/HomeBudjet/src/com/dim/app/resource/Task.xml", "SHOW_IMAGE")
+    TaskExecuter().executeTask(showTask)
