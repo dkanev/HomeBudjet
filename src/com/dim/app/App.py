@@ -55,6 +55,7 @@ class App(object):
         fm.pack(fill=BOTH, expand=YES)
         print("test")
         print("test")
+        print("test")
 
 
     def mergeFile(self):
