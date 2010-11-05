@@ -59,7 +59,7 @@ class App(object):
         newFile=self.getNewFileName("./resource", "Merge", "xml")
         mergeTool=Merge(self.textBox1.get(),self.textBox2.get())
         mergeTool.mergePredecesorXMLFile(newFile)
-        self.saveLabel.config(text=newFile)
+        self.saveLabel.config(text=newFile) 
         
              
 if __name__ == '__main__':
