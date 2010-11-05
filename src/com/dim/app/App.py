@@ -54,6 +54,8 @@ class App(object):
         frame.grid(row=5, columnspan=2)
         fm.pack(fill=BOTH, expand=YES)
         print("test")
+        print("test")
+
 
     def mergeFile(self):
         newFile=self.getNewFileName("./resource", "Merge", "xml")
