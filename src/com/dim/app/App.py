@@ -53,6 +53,7 @@ class App(object):
         Button(frame, text='Quit',command=master.quit).pack(side=LEFT, fill=BOTH)
         frame.grid(row=5, columnspan=2)
         fm.pack(fill=BOTH, expand=YES)
+        print("test")
 
     def mergeFile(self):
         newFile=self.getNewFileName("./resource", "Merge", "xml")
