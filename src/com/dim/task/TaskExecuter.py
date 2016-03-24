@@ -1,7 +1,7 @@
 '''
 Created on Oct 18, 2010
 
-@author: dimitar
+@author: lele
 '''
 from com.dim.task.Task import Task
 from com.dim.task.TaskBuilder import TaskBuilder

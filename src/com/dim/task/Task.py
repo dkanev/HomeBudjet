@@ -1,7 +1,7 @@
 '''
 Created on Oct 18, 2010
 
-@author: dimitar
+@author: dim
 '''
 
 class Task(object):
@@ -12,7 +12,7 @@ class Task(object):
 
     def __init__(self,taskType,processName,argList,returnCode):
         '''
-        Constructor
+        test
         '''
         
     def setName(self,taskName):
